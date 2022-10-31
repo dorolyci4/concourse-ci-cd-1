@@ -45,6 +45,7 @@ echo "npm install -g newman-reporter-htmlextra."
 npm i -g newman-reporter-htmlextra
 echo "**********************PWD************ DEBUT"
 pwd
+ls -lrt
 echo "run newman"
 echo $COLLECTION_URL
 #newman run $COLLECTION_URL -e $ENVIRONMENT_URL -r htmlextra
