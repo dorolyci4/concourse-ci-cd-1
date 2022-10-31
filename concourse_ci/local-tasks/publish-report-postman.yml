@@ -8,7 +8,7 @@ image_resource:
     tag: 5-alpine
 
 params:
-  COLLECTION_URL:
+  COLLECTION_URL: Mockito.json
   ENVIRONMENT_URL:
   NEWMAN_ADDITIONAL_ARGS:
 
