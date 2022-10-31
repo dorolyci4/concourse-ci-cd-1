@@ -25,11 +25,13 @@ resource_types:
     source: 
       repository: jmkarthik/concourse-kubectl-resource
       tag: latest
+
   - name: teams-report-type
     type: docker-image
     source:
       repository: navicore/teams-notification-resource
       tag: latest
+
   - name: push-report-type
     type: docker-image
     source:
@@ -59,6 +61,23 @@ resources:
       certificate_authority_data: ((cad))
       token: ((token))
 
+  - name: teams-report
+    type: teams-report-type
+    source:
+      url: ((teams-alerte-webhook))
+      branch: ((git-branch-dev))
+      ignore_paths:
+        - readme.md
+
+  - name: repo-dev
+    type: git
+    icon: git
+    check_every: 10m
+    source:
+      uri: ((github-url))/((github-repo-name)).git
+      branch: ((git-branch-dev))
+      ignore_paths:
+        - readme.md
 
   - name: start-timer-dev
     type: time
@@ -111,15 +130,13 @@ jobs:
       - in_parallel:
           - get: start-timer-dev
             trigger: ((postman-automatique-dev))
-          - get: repo # utiliser par newman-test.yml
+          - get: repo
             resource: repo-dev
-          - get: tasks # tasks pour runner la collection de postman
-          #- get: artefactory
       - task: run-postman-collections
-        file: repo/ci/local-tasks/publish-report-postman.yml
+        file: repo/concourse_ci/local-tasks/publish-report-postman.yml
         params:
           COLLECTIONS_URL: ((postman-collection-dev))
-          ENVIRONMENT_URL: ((postman-params-env-dev))
+          #ENVIRONMENT_URL: ((postman-params-env-dev))
           NEWMAN_ADDITIONAL_URL: ((postman-additional-args))
     on_success: *TEAMS_RAPPORT_DEV_ON_SUCCESS
     on_failure: *TEAMS_RAPPORT_DEV_ON_FAILURE
@@ -129,3 +146,5 @@ groups:
     jobs:
       - run-newman-dev
       - test
+      - package
+      - deploy
