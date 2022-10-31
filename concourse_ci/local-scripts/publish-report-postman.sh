@@ -40,10 +40,12 @@ npm i -g newman-reporter-htmlextra
 
 
 echo "run newman"
-newman run $COLLECTION_URL \
-       --color off
-       --reporters cli,html \
-       --reporter-htmlextra reporters $NEWMAN_ADDITIONAL_ARGS
+echo $COLLECTION_URL
+newman run $COLLECTION_URL -r htmlextra
+#newman run $COLLECTION_URL \
+#       --color off
+#       --reporters cli,html \
+#       --reporter-htmlextra reporters $NEWMAN_ADDITIONAL_ARGS
 
 cd artifactory-rc
    VERSION='cat version'
