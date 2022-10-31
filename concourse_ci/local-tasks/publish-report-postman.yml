@@ -21,4 +21,4 @@ outputs:
 run:
   path: sh
   args:
-    -repo/concourse_ci/local-scripts/publish-report-postman.sh
+    - repo/concourse_ci/local-scripts/publish-report-postman.sh
