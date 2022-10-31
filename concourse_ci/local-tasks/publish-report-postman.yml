@@ -9,8 +9,8 @@ image_resource:
 
 params:
   COLLECTION_URL:
-  ENVIRONMENT_URL: service_local
-  NEWMAN_ADDITIONAL_ARGS: -r htmlextra
+  ENVIRONMENT_URL:
+  NEWMAN_ADDITIONAL_ARGS:
 
 inputs:
   - name: repo
