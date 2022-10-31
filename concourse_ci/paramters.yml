@@ -1,4 +1,5 @@
 # Project
+#https://github.com/dorolyci4/concourse-ci-cd-1.git
 product-name: concourse-ci-cd-1
 component-name: hello-springboot
 contact-email: dorolyci4@gmail.com
@@ -6,6 +7,7 @@ contact-email: dorolyci4@gmail.com
 # Git
 github-url: git@github.com:dorolyci4
 #github-url: git@github.com:dorolyci4/concourse-ci-cd-1.git
+
 github-repo-name: concourse-ci-cd-1-hello-springboot
 git-branch-dev: master
 
@@ -22,16 +24,16 @@ cad: <<CERT AUTH DATA>>
 token: <<K8 TOKEN>>
 
 # Pour la job newman
-postman-collection-dev: repo/postman/Mockito.postman_collection.json
+postman-collection-dev: repo/postman/E-Bankpostman_collection.json.json
 #postman-collection-qa: repo/postman/Mockito.postman_collection.json
 postman-params-env-dev: repo/postman/Mockito.postman_collection.json
 #postman-params-env-qa: repo/postman/Mockito.postman_collection.json
 postman-additional-args: --reporter-junit-export reports/dev.report.junit.xml --reporters cli,html,junit --folder tests-non-regression-automatise
 postman-report-junit-file: dev.report.junit.xml
 start-matin-dev: 9:30
-stop-matin-dev: 11:50
+stop-matin-dev: 12:50
 start-matin-qa: 10:20
-stop-matin-qa: 11:20
+stop-matin-qa: 12:20
 postman-automatique-dev: true
 postman-automatique-qa: true
 

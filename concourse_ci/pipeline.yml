@@ -42,7 +42,7 @@ resources:
   - name: spring-boot-service
     type: git
     source:
-      uri: https://github.com/azmathasan92/concourse-ci-cd.git
+      uri: https://github.com/dorolyci4/concourse-ci-cd-1.git
       branch: master
 
   - name: spring-boot-service-docker-repository
@@ -74,19 +74,11 @@ resources:
     icon: git
     check_every: 10m
     source:
-      uri: ((github-url))/((github-repo-name)).git
+      uri: https://github.com/dorolyci4/concourse-ci-cd-1.git
+     # uri: ((github-url))/((github-repo-name)).git
       branch: ((git-branch-dev))
       ignore_paths:
         - readme.md
-
-  - name: start-timer-dev
-    type: time
-    icon: clock-outline
-    source:
-      start: ((start-matin-dev))
-      stop: ((stop-matin-dev))
-      days: [ Monday, Tuesday, Wednesday, Thursday, Friday,Saturndy, Sunday ]
-      location: America/Montreal
 
 
 jobs:
@@ -125,12 +117,14 @@ jobs:
 
   - name: run-newman-dev
     serial: true
+    public: true
     serial_groups: [ develop ]
     plan:
       - in_parallel:
-          - get: start-timer-dev
-            trigger: ((postman-automatique-dev))
+          #- get: start-timer-dev
+
           - get: repo
+            trigger: ((postman-automatique-dev))
             resource: repo-dev
       - task: run-postman-collections
         file: repo/concourse_ci/local-tasks/publish-report-postman.yml
