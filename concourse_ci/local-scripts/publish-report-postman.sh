@@ -7,10 +7,10 @@ if [ -z "$COLLECTION_URL" ]; then
   erreur_validation=1
 fi
 
-if [ -z "$ENVIRONMENT_URL" ]; then
-  echo -e "Le paramètre ENVIRONMENT_URL doit être renseigné."
-  erreur_validation=1
-fi
+#if [ -z "$ENVIRONMENT_URL" ]; then
+#  echo -e "Le paramètre ENVIRONMENT_URL doit être renseigné."
+#  erreur_validation=1
+#fi
 
 if [ -z "$erreur_validation" == "1" ]; then
   echo -e "ARRÊT DU TRAITEMENT."
