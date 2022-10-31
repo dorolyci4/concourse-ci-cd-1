@@ -9,7 +9,7 @@ image_resource:
 
 params:
   COLLECTION_URL: Mockito.json
-  ENVIRONMENT_URL:
+  ENVIRONMENT_URL: service_local.postman_environment.json
   NEWMAN_ADDITIONAL_ARGS:
 
 inputs:
