@@ -1,3 +1,5 @@
+#
+---
 plaform: linux
 image_resource:
   type: registry-image
@@ -6,7 +8,7 @@ image_resource:
     tag: 5-alpine
 
 params:
-  COLLECTION_URL: repo/postman
+  COLLECTION_URL:
   NEWMAN_ADDITIONAL_ARGS: -r htmlextra
 
 inputs:
