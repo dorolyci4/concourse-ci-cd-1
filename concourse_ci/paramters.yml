@@ -24,7 +24,7 @@ cad: <<CERT AUTH DATA>>
 token: <<K8 TOKEN>>
 
 # Pour la job newman
-postman-collection-dev: repo/postman/E-Bankpostman_collection.json.json
+postman-collection-dev: repo/postman/E-Bankpostman_collection.json
 #postman-collection-qa: repo/postman/Mockito.postman_collection.json
 postman-params-env-dev: repo/postman/Mockito.postman_collection.json
 #postman-params-env-qa: repo/postman/Mockito.postman_collection.json
