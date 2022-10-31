@@ -31,9 +31,13 @@ function setExitStatus {
 }
 echo "Install newman html-reporter."
 echo "npm install -g newman."
-npm install -g newman
+npm i -g newman
+npm i newman-collection
+npm i newman-env
+npm i -D jest-runner-newman
 echo "npm install -g newman-reporter-htmlextra."
-npm install -g newman-reporter-htmlextra
+npm i -g newman-reporter-htmlextra
+
 
 echo "run newman"
 newman run $COLLECTION_URL \
