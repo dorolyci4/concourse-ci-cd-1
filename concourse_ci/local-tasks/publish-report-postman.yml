@@ -9,7 +9,7 @@ image_resource:
 
 params:
   COLLECTION_URL:
-  NEWMAN_ADDITIONAL_ARGS: -r htmlextra
+  NEWMAN_ADDITIONAL_ARGS:
 
 inputs:
   - name: repo

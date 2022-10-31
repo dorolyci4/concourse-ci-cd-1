@@ -122,7 +122,6 @@ jobs:
     plan:
       - in_parallel:
           #- get: start-timer-dev
-
           - get: repo
             trigger: ((postman-automatique-dev))
             resource: repo-dev
