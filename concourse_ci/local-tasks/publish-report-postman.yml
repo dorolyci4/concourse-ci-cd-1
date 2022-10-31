@@ -1,10 +1,10 @@
-#
+
 ---
-plaform: linux
+platform: linux
 image_resource:
   type: registry-image
   source:
-    repositoy: postman/newman
+    repository: postman/newman
     tag: 5-alpine
 
 params:
