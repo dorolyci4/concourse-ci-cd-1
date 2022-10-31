@@ -56,16 +56,9 @@ $COMMAND
  #      -e $ENVIRONMENT_URL \
        #$NEWMAN_ADDITIONAL_ARGS
 echo "**********************PWD************ FIN"
-pwd
-
-echo " recherche1"
-find /reports
-echo " recherche2"
-find /report
-
-echo " deplacement reports"
 cd reports
-ls /reports/
+ls -lrt
+pwd
 
 
 NEWMAN_STATUS=$?
