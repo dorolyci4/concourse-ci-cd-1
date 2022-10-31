@@ -129,7 +129,7 @@ jobs:
         file: repo/concourse_ci/local-tasks/publish-report-postman.yml
         params:
           COLLECTIONS_URL: ((postman-collection-dev))
-          ENVIRONMENT_URL: ((postman-params-env-dev))
+          #ENVIRONMENT_URL: ((postman-params-env-dev))
           NEWMAN_ADDITIONAL_URL: ((postman-additional-args))
     on_success: *TEAMS_RAPPORT_DEV_ON_SUCCESS
     on_failure: *TEAMS_RAPPORT_DEV_ON_FAILURE
