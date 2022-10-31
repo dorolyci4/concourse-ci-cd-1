@@ -9,7 +9,8 @@ github-url: git@github.com:dorolyci4
 #github-url: git@github.com:dorolyci4/concourse-ci-cd-1.git
 
 github-repo-name: concourse-ci-cd-1-hello-springboot
-git-branch-dev: master
+git-branch-dev: feature/concourse-test
+#git-branch-dev: master
 
 # Docker
 docker-hub-email: <<DOCKER HUB EMAIL>>
