@@ -45,21 +45,24 @@ echo "npm install -g newman-reporter-htmlextra."
 npm i -g newman-reporter-htmlextra
 echo "**********************PWD************ DEBUT"
 pwd
-ls -lrt
+
 echo "run newman"
 echo $COLLECTION_URL
 #newman run $COLLECTION_URL -e $ENVIRONMENT_URL -r htmlextra
 newman run $COLLECTION_URL \
-       $NEWMAN_ADDITIONAL_ARGS
-#echo "commande : " $COMMAND
-
-#COMMAND
  #      -e $ENVIRONMENT_URL \
-       #$NEWMAN_ADDITIONAL_ARGS
+       $NEWMAN_ADDITIONAL_ARGS
 echo "**********************PWD************ FIN"
-cd reports
-ls -lrt
 pwd
+
+echo " recherche1"
+find /reports
+echo " recherche2"
+find /report
+
+echo " deplacement reports"
+cd reports
+ls /reports/
 
 
 NEWMAN_STATUS=$?
