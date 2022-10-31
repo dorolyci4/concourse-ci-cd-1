@@ -44,13 +44,14 @@ npm i -D jest-runner-newman
 echo "npm install -g newman-reporter-htmlextra."
 npm i -g newman-reporter-htmlextra
 
-
+pwd
 echo "run newman"
 echo $COLLECTION_URL
 #newman run $COLLECTION_URL -e $ENVIRONMENT_URL -r htmlextra
 newman run $COLLECTION_URL \
  #      -e $ENVIRONMENT_URL \
        $NEWMAN_ADDITIONAL_ARGS
+pwd
 
 echo " recherche1"
 find /reports
