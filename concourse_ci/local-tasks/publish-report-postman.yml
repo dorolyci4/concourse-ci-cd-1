@@ -9,6 +9,7 @@ image_resource:
 
 params:
   COLLECTION_URL:
+  ENVIRONMENT_URL:
   NEWMAN_ADDITIONAL_ARGS:
 
 inputs:

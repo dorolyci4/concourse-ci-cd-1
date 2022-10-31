@@ -38,3 +38,5 @@ postman-automatique-dev: true
 postman-automatique-qa: true
 
 teams-alerte-webhook:
+
+ENVIRONMENT_URL: service_local
