@@ -43,7 +43,7 @@ npm i newman-env
 npm i -D jest-runner-newman
 echo "npm install -g newman-reporter-htmlextra."
 npm i -g newman-reporter-htmlextra
-
+echo "**********************PWD************ DEBUT"
 pwd
 echo "run newman"
 echo $COLLECTION_URL
@@ -51,6 +51,7 @@ echo $COLLECTION_URL
 newman run $COLLECTION_URL \
  #      -e $ENVIRONMENT_URL \
        $NEWMAN_ADDITIONAL_ARGS
+echo "**********************PWD************ FIN"
 pwd
 
 echo " recherche1"
