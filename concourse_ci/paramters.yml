@@ -27,7 +27,7 @@ token: <<K8 TOKEN>>
 # Pour la job newman
 postman-collection-dev: repo/postman/Mockito.json
 #postman-collection-qa:
-postman-params-env-dev: service_local.postman_environment.json
+postman-params-env-dev: repo/postman/service_local.postman_environment.json
 #postman-params-env-qa:
 #postman-additional-args: --reporter-junit-export reports/dev.report.junit.xml --reporters cli,html,junit --folder tests-non-regression-automatise
 postman-additional-args: -r htmlextra
@@ -40,5 +40,3 @@ postman-automatique-dev: true
 postman-automatique-qa: true
 
 teams-alerte-webhook:
-
-ENVIRONMENT_URL: service_local
