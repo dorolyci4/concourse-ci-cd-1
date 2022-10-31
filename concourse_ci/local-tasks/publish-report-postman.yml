@@ -9,7 +9,7 @@ image_resource:
 
 params:
   COLLECTION_URL:
-  ENVIRONMENT_URL:
+  ENVIRONMENT_URL: #service_local
   NEWMAN_ADDITIONAL_ARGS:
 
 inputs:
