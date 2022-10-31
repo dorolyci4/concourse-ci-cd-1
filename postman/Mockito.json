@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "03f4811f-4006-4fab-ae05-626492db0e9d",
+		"name": "Mockito",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7502271"
+	},
+	"item": [
+		{
+			"name": "get All users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/user/getUsers"
+			},
+			"response": []
+		},
+		{
+			"name": "save users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"alexis\",\r\n    \"role\":\"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/user/addUser"
+			},
+			"response": []
+		}
+	]
+}

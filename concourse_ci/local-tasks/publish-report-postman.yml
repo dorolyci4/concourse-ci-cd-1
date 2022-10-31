@@ -1,0 +1,22 @@
+plaform: linux
+image_resource:
+  type: registry-image
+  source:
+    repositoy: postman/newman
+    tag: 5-alpine
+
+params:
+  COLLECTION_URL: repo/postman
+  NEWMAN_ADDITIONAL_ARGS: -r htmlextra
+
+inputs:
+  - name: repo
+  - tasks: tasks
+
+outputs:
+  - name: reports
+
+run:
+  path: sh
+  args:
+    -repo/concourse_ci/local-scripts/publish-report-postman.sh

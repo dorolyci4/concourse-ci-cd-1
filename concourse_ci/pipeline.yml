@@ -1,8 +1,39 @@
+#fly -t gc login -c localhost -n gestion-consentement
+#fly -t gc sp -p consentement-service-metier c- ci/deploy/pipeline.yml -l -ci/deploy/parameters.yml
+
+#fly -t tutorial sp -p spring-boot-service -c concourse_ci/pipeline.yml -l concourse_ci/paramters.yml
+#fly -t tutorial unpause-pipeline -p spring-boot-service
+
+TEAMS_RAPPORT_DEV_ON_SUCCESS: &TEAMS_RAPPORT_DEV_ON_SUCCESS
+  put: teams-report
+  params:
+    text: Exécution des tests terminés avec succès
+    title: Exécution des tests terminés avec succès pour consentement-service sur dev
+    actionName: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME//pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+
+TEAMS_RAPPORT_DEV_ON_FAILURE: &TEAMS_RAPPORT_DEV_ON_FAILURE
+  put: teams-report
+  params:
+    text: Exécution des tests terminés avec erreur
+    title: Exécution des tests terminés avec erreur pour consentement-service sur dev
+    actionName: $ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME//pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME
+
+
 resource_types:
   - name: kubectl-resource
     type: docker-image
     source: 
       repository: jmkarthik/concourse-kubectl-resource
+      tag: latest
+  - name: teams-report-type
+    type: docker-image
+    source:
+      repository: navicore/teams-notification-resource
+      tag: latest
+  - name: push-report-type
+    type: docker-image
+    source:
+      repository: navicore/teams-notification-resource
       tag: latest
 
 resources:
@@ -28,10 +59,20 @@ resources:
       certificate_authority_data: ((cad))
       token: ((token))
 
+
+  - name: start-timer-dev
+    type: time
+    icon: clock-outline
+    source:
+      start: ((start-matin-dev))
+      stop: ((stop-matin-dev))
+      days: [ Monday, Tuesday, Wednesday, Thursday, Friday,Saturndy, Sunday ]
+      location: America/Montreal
+
+
 jobs:
   - name: test
     public: true
-
     plan:
       - get: spring-boot-service
         trigger: true
@@ -62,3 +103,29 @@ jobs:
       - put: kubectl
         params:
           file: "spring-boot-service/spring-boot-deploy.yaml"
+
+  - name: run-newman-dev
+    serial: true
+    serial_groups: [ develop ]
+    plan:
+      - in_parallel:
+          - get: start-timer-dev
+            trigger: ((postman-automatique-dev))
+          - get: repo # utiliser par newman-test.yml
+            resource: repo-dev
+          - get: tasks # tasks pour runner la collection de postman
+          #- get: artefactory
+      - task: run-postman-collections
+        file: repo/ci/local-tasks/publish-report-postman.yml
+        params:
+          COLLECTIONS_URL: ((postman-collection-dev))
+          ENVIRONMENT_URL: ((postman-params-env-dev))
+          NEWMAN_ADDITIONAL_URL: ((postman-additional-args))
+    on_success: *TEAMS_RAPPORT_DEV_ON_SUCCESS
+    on_failure: *TEAMS_RAPPORT_DEV_ON_FAILURE
+
+groups:
+  - name: develop
+    jobs:
+      - run-newman-dev
+      - test

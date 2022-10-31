@@ -1,0 +1,36 @@
+# Project
+product-name: concourse-ci-cd-1
+component-name: hello-springboot
+contact-email: dorolyci4@gmail.com
+
+# Git
+github-url: git@github.com:dorolyci4
+#github-url: git@github.com:dorolyci4/concourse-ci-cd-1.git
+github-repo-name: gestion-consentement-consentement-service-metier
+git-branch-dev: master
+
+# Docker
+docker-hub-email: <<DOCKER HUB EMAIL>>
+docker-hub-username: <<DOCKER USERNAME>>
+docker-hub-password: <<DOCKER PASSWORD>>
+docker-hub-repo-name: <<DOCKER REPO NAME>>
+
+# Kubernetes
+server: <<API SERVER URI>>
+namespace: <<NAMESPACE>>
+cad: <<CERT AUTH DATA>>
+token: <<K8 TOKEN>>
+
+# Pour la job newman
+postman-collection-dev: repo/postman/Mockito.postman_collection.json
+postman-collection-qa: repo/postman/Mockito.postman_collection.json
+postman-params-env-dev: repo/postman/Mockito.postman_collection.json
+postman-params-env-qa: repo/postman/Mockito.postman_collection.json
+postman-additional-args: --reporter-junit-export reports/dev.report.junit.xml --reporters cli,html,junit --folder tests-non-regression-automatise
+postman-report-junit-file: dev.report.junit.xml
+start-matin-dev: 9:30
+stop-matin-dev: 11:50
+start-matin-qa: 10:20
+stop-matin-qa: 11:20
+postman-automatique-dev: true
+postman-automatique-qa: true
