@@ -8,8 +8,8 @@ image_resource:
     tag: 5-alpine
 
 params:
-  COLLECTION_URL: repo/concourse_ci/Mockito.json
-  ENVIRONMENT_URL: repo/concourse_ci/service_local.postman_environment.json
+  COLLECTION_URL: repo/postman/Mockito.json
+  ENVIRONMENT_URL: repo/postman/service_local.postman_environment.json
   NEWMAN_ADDITIONAL_ARGS: -r htmlextra
 
 inputs:
