@@ -52,9 +52,15 @@ newman run $COLLECTION_URL \
  #      -e $ENVIRONMENT_URL \
        $NEWMAN_ADDITIONAL_ARGS
 
-cd artifactory-rc
-   VERSION='cat version'
-   cp version ../reports/
+echo " recherche1"
+find /reports
+echo " recherche2"
+find /report
+
+echo " deplacement reports"
+cd reports
+ls /reports/
+
 
 NEWMAN_STATUS=$?
 trap set setExitStatus EXIT
