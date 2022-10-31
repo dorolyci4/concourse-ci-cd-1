@@ -49,9 +49,12 @@ ls -lrt
 echo "run newman"
 echo $COLLECTION_URL
 #newman run $COLLECTION_URL -e $ENVIRONMENT_URL -r htmlextra
-newman run $COLLECTION_URL \
+COMMAND = newman run $COLLECTION_URL $NEWMAN_ADDITIONAL_ARGS
+echo "commande : " $COMMAND
+
+$COMMAND
  #      -e $ENVIRONMENT_URL \
-       $NEWMAN_ADDITIONAL_ARGS
+       #$NEWMAN_ADDITIONAL_ARGS
 echo "**********************PWD************ FIN"
 pwd
 

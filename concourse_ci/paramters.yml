@@ -30,7 +30,7 @@ postman-collection-dev: repo/postman/Mockito.json
 #postman-params-env-dev: repo/postman/service_local.postman_environment.json
 #postman-params-env-qa:
 #postman-additional-args: --reporter-junit-export reports/dev.report.junit.xml --reporters cli,html,junit --folder tests-non-regression-automatise
-postman-additional-args: -r htmlextra
+postman-additional-args: -r htmlextra --folder /tests
 postman-report-junit-file: dev.report.junit.xml
 start-matin-dev: 9:30
 stop-matin-dev: 12:50
